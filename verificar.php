@@ -8,5 +8,6 @@ if(($usuariou == "adm") && ($senha =="1234")){
     $_SESSION["usuario"]= $usuariou;
     header("Location: home.php");
 }else{
-    header("Location: error.php");
+    setcookie("log","Usuário ou senha invávidos.");
+    header("Location: logarjesus.php");
 }

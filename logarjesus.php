@@ -1,3 +1,11 @@
+<?php
+  session_start();
+  if (isset($_SESSION["loged_user"])) {
+    header("Location: home.php");
+    die();
+  }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +15,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="BS/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="BS/css/ola.css" rel="stylesheet" type="text/css" />
-    <script src="main.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="js/index.js"></script>
 </head>
 <body class="LOGAR">
     <div class="container">
@@ -20,6 +29,12 @@
                     <input type="submit" value="VAI PUDIM" class="btn btn-outline-light">
                 </form> 
                 <br>
+                <?php 
+                if(isset($_COOKIE["log"])){
+                    echo '<div class="alert alert-danger" role="alert">'. $_COOKIE["log"] .'</div>';
+                    setcookie('log', null, -1);
+                }
+                ?>
             </div>
         </div>
     </div>
